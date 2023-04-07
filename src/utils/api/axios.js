@@ -1,14 +1,18 @@
-import axios from "axios";
+import axiosOrignal from "axios";
 
-const axiosInstance = axios.create({
-  baseURL: "https://raovatbds.webdaitin.com//wp-json/wp",
+const axios = axiosOrignal.create({
+  baseURL: "http://localhost:8888/demobatdongsan/wordpress/wp-json",
   timeout: 60000,
   //   headers: { "X-Custom-Header": "foobar" },
 });
 
 // Add a request interceptor
-axiosInstance.interceptors.request.use(
+axios.interceptors.request.use(
   function (config) {
+    const token = localStorage.getItem("jwt")
+    if (token) {
+      config.headers.Authorization = `Bearer ${token}`
+    }
     // Do something before request is sent
     return config;
   },
@@ -19,7 +23,7 @@ axiosInstance.interceptors.request.use(
 );
 
 // Add a response interceptor
-axiosInstance.interceptors.response.use(
+axios.interceptors.response.use(
   function (response) {
     // Any status code that lie within the range of 2xx cause this function to trigger
     // Do something with response data
@@ -32,4 +36,4 @@ axiosInstance.interceptors.response.use(
   }
 );
 
-export default axiosInstance;
+export default axios;

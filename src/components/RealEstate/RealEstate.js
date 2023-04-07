@@ -9,7 +9,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { useEffect, useState } from "react";
 import axios from "axios";
-function RealEstate() {
+function RealEstate(props) {
   const [chothue, setChoThue] = useState([]);
   useEffect(() => {
     axios
@@ -40,8 +40,8 @@ function RealEstate() {
             .filter((_, index) => index < 6)
             .map((c, index) => {
               return (
-                <div>
-                  <Box w="100%" className="relative">
+                <div key={c.index}>
+                  <Box w="100%" className="relative" key={c.index}>
                     <div>
                       <div className="flex">
                         <div>
@@ -77,7 +77,7 @@ function RealEstate() {
                     </div>
                     <div className="bg-slate-900">
                       <h3 className="text-base font-bold text-regal-blue uppercase des-tin">
-                        <Link to={c.title} className="">
+                        <Link to={`/nha-dat-ban/${c.id}`} className="">
                           {c.title}
                         </Link>
                       </h3>

@@ -1,5 +1,6 @@
 import axiosInstance from "./axios";
 const ENDPOINT_API_MAP = "http://localhost:3000";
+
 const API = {
   posts: {},
   categories: {

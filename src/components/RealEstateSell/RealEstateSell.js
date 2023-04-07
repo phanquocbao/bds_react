@@ -33,7 +33,7 @@ function RealEstateSell() {
             return (
               <div className="grid grid-cols-12 gap-2 mt-4">
                 <div className="col-span-3">
-                  <Link className="max-w-full">
+                  <Link className="max-w-full" to={`/nha-dat-ban/${n.id}`}>
                     <img
                       src={n.thumbnail}
                       title={n.title}
@@ -44,7 +44,7 @@ function RealEstateSell() {
                 <div className="col-span-9">
                   <div className="flex justify-between justify-center">
                     <h3 className="text-base text-regal-blue font-bold hover:text-orange leading-none mb-2 mr-3">
-                      <Link to={n.slug} title={n.title}>{n.title}</Link>
+                      <Link to={`/nha-dat-ban/${n.id}`} title={n.title}>{n.title}</Link>
                     </h3>
                     <span className="bg-la-palma text-white text-sm font-medium px-2 w-[110px] h-[25px]">
                       Giá: {n.thongso.gia} {n.thongso.dongiane}
